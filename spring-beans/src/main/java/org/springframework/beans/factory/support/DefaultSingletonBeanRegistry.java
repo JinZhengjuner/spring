@@ -269,7 +269,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					logger.debug("Creating shared instance of singleton bean '" + beanName + "'");
 				}
 				/**
-				 * 标记当前的bean马上就要被创建了
+				 * 标记当前的bean马上就要被创建了。。
 				 * singletonsCurrentlyInCreation 在这里会把beanName加入进来，若第二次循环依赖（构造器注入会抛出异常）
 				 */
 
@@ -281,7 +281,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 				}
 				try {
 					//<3> 初始化 bean
-					// 这个过程其实是调用 createBean() 方法
+					// 这个过程其实是调用 createBean() 方法。。
 					singletonObject = singletonFactory.getObject();
 					newSingleton = true;
 				}

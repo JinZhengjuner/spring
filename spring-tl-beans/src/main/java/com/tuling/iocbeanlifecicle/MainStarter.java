@@ -18,6 +18,7 @@ public class MainStarter {
 	public static void main(String[] args)   {
 		// 加载spring上下文
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
+		new ClassPathXmlApplicationContext("a.xml");
 
 		Car car =  (Car) context.getBean("car");
 		System.out.println(car.getName());
@@ -33,7 +34,7 @@ public class MainStarter {
 		List<Tank> list=new ArrayList<>();
 		Tank tank2=new Tank();
 		tank2.setName("坦克2号");
-		tank2.setIndex(2);
+		tank2.setIndex(2);b
 		list.add(tank2);
 
 		Tank tank=new Tank();

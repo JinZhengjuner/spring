@@ -535,7 +535,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// 第四:留个子类去实现该接口
 				postProcessBeanFactory(beanFactory);
 
-				// 调用我们的bean工厂的后置处理器. 1. 会在此将class扫描成beanDefinition  2.bean工厂的后置处理器调用
+				// 调用我们的bean工厂的后置处理器. 1. 会在此将class扫描成beanDefinition  2.bean工厂的后置处理器调用 创世纪
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// 注册我们bean的后置处理器
@@ -553,7 +553,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				//把我们的事件监听器注册到多播器上
 				registerListeners();
 
-				// 实例化我们剩余的单实例bean.
+				// 实例化我们剩余的单实例bean.   ..
 				finishBeanFactoryInitialization(beanFactory);
 
 				// 最后容器刷新 发布刷新事件(Spring cloud也是从这里启动的)

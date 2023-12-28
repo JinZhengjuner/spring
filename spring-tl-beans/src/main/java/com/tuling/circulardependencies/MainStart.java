@@ -3,6 +3,7 @@ package com.tuling.circulardependencies;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
@@ -14,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Author 徐庶   QQ:1092002729
  * @Slogan 致敬大师，致敬未来的你
  */
+
+@EnableAspectJAutoProxy
 public class MainStart {
 
     public static void main(String[] args) throws Exception {
@@ -35,7 +38,8 @@ public class MainStart {
     private static Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
 
     // 二级缓存   纯净态Bean (存储不完整的Bean用于解决循环依赖中多线程读取一级缓存的脏数据)
-    // 所以当有了三级缓存后，它还一定要存在，  因为它要存储的 aop创建的动态代理对象,  不可能重复创建
+    // 所以当有了三级缓存后，它还一定要存在，  因为
+	// 它要存储的 aop创建的动态代理对象,  不可能重复创建
     private static Map<String, Object> earlySingletonObjects = new ConcurrentHashMap<>(256);
 
     // 三级缓存

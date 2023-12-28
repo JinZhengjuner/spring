@@ -522,17 +522,17 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	@Override
 	public void refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
-			//1:准备刷新上下文环境
+			//1:准备刷新上下文环境  声明了早期监听器和事件，不需要手动调用publicEvent
 			prepareRefresh();
 
 			//2:获取告诉子类初始化Bean工厂  不同工厂不同实现
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
-			//3:对bean工厂进行填充属性
+			//3:对bean工厂进行填充属性  注册了解析接口方式监听器的BeanPostProcessor
 			prepareBeanFactory(beanFactory);
 
 			try {
-				// 第四:留个子类去实现该接口
+				// 第四:留个子类去实现该接口  提供给其他接口去扩展的
 				postProcessBeanFactory(beanFactory);
 
 				// 调用我们的bean工厂的后置处理器. 1. 会在此将class扫描成beanDefinition  2.bean工厂的后置处理器调用 创世纪
@@ -544,7 +544,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// 初始化国际化资源处理器.
 				initMessageSource();
 
-				// 创建事件多播器
+				// 创建事件多播器 管理监听器 负责调用事件对应的监听器
 				initApplicationEventMulticaster();
 
 				// 这个方法同样也是留个子类实现的springboot也是从这个方法进行启动tomcat的.
